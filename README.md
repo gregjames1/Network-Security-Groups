@@ -39,10 +39,43 @@ Log into your Azure account and create your resources - you will need to create 
 <br />
 
 <p>
+<img width="1762" alt="Screenshot 2023-08-06 at 6 54 54 PM" src="https://github.com/gregjames1/Network-Security-Groups/assets/129281605/dcd7e70c-af1e-4c9d-b5bc-500502cd8a56">
+
+</p>
+<p>
+Remote into your Windows VM using Remote Desktop (you will log in with the username and password that you set up while you were creating the VM) and install Wireshark. Follow the installation steps and open the program once finished. Run PowerShell as an Administrator and ping VM-2 (Ubuntu Server) using its private IP Address. Filter for ICMP traffic in Wireshark and observe the network traffic - requests from VM-1 (source IP) and replies from VM-2 (destination IP).
+</p>
+<br />
+
+<p>
+<img width="748" alt="Screenshot 2023-08-06 at 7 00 58 PM" src="https://github.com/gregjames1/Network-Security-Groups/assets/129281605/87e6dcad-350a-4dd5-a25f-fb5e2439b4df">
+</p>
+<p>
+Return to the Azure portal, navigate to Network Security Groups, and select VM-2 (Ubuntu Server). Select inbound security rules from the left menu, choose add, and select the ICMP protocol, deny the action, enter a priority higher than 300 (to ensure that the new rule is evaluated prior to the other existing rules), and click the add button.
+</p>
+<br />
+
+<p>
+<img width="1822" alt="Screenshot 2023-08-06 at 7 09 53 PM" src="https://github.com/gregjames1/Network-Security-Groups/assets/129281605/a0e20410-db42-4be0-b28d-aec7f6efd08c">
+</p>
+<p>
+Return to the remote Windows session and observe that the ping requests begin to timeout as our new security rule takes effect. View the traffic in Wireshark and notice that the requests begin to go unanswered due to the new rule. Stop the ping requests in VM-1 and delete the rule created in the previous step or alter it to allow ICMP traffic.
+</p>
+<br />
+
+<p>
+<img width="1860" alt="Screenshot 2023-08-06 at 7 19 38 PM" src="https://github.com/gregjames1/Network-Security-Groups/assets/129281605/6c1d85e6-4c74-4dcc-abf0-9a1265368ecb">
+</p>
+<p>
+Return to Wireshark and filter for SSH traffic. In Powershell, SSH into VM-2 using the private IP address and the credentials set up when creating the VM. Observe the traffic in Wireshark as you connect to the server using this protocol.
+</p>
+<br />
+
+<p>
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Remote into your Windows VM using Remote Desktop (you will log in with the username and password that you set up while you were creating the VM) and install Wireshark. Follow the installation steps and open the program once finished. Run PowerShell as an Administrator and ping your second VM (Ubuntu Server) using its private IP Address. Filter for ICMP traffic in Wireshark and observe the network traffic.
+Exit the SSH session, close Powershell, and open Command Prompt as an administrator. Filter for DHCP traffic in Wireshark. Enter "ipconfig /renew" in Command Prompt to request a new IP address to be assigned to VM-1 and observe the traffic in Wireshark.
 </p>
 <br />
 
