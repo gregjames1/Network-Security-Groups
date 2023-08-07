@@ -72,17 +72,17 @@ Return to Wireshark and filter for SSH traffic. In Powershell, SSH into VM-2 usi
 <br />
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img width="2268" alt="Screenshot 2023-08-06 at 7 47 36 PM" src="https://github.com/gregjames1/Network-Security-Groups/assets/129281605/829be2f6-ed11-460f-8eb2-f6d850ad00c6">
 </p>
 <p>
-Exit the SSH session, close Powershell, and open Command Prompt as an administrator. Filter for DHCP traffic in Wireshark. Enter "ipconfig /renew" in Command Prompt to request a new IP address to be assigned to VM-1 and observe the traffic in Wireshark.
+Exit the SSH session, close Powershell, and open Command Prompt as an administrator. Filter for DHCP traffic in Wireshark. Enter "ipconfig /renew" in Command Prompt to request a new IP address to be assigned to VM-1 and observe the traffic in Wireshark. Although in the above image, an error was encountered while requesting an new IP address, we are still able to view the network activity in Wireshark.
 </p>
 <br />
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img width="2067" alt="Screenshot 2023-08-06 at 7 51 48 PM" src="https://github.com/gregjames1/Network-Security-Groups/assets/129281605/cf53319f-e032-49f8-8ba7-42e5c0a8d6b5">
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Filter for DNS traffic in Wireshark. In Command Prompt, enter "nslookup www.netflix.com" and observe the traffic in Wireshark.
 </p>
 <br />
