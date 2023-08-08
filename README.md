@@ -35,7 +35,7 @@ In this tutorial, we observe various network traffic to and from Azure Virtual M
 <img width="792" alt="Screenshot 2023-08-06 at 6 32 03 PM" src="https://github.com/gregjames1/Network-Security-Groups/assets/129281605/63168035-e10f-4622-ab14-370cd0e6338e">
 </p>
 <p>
-Login to your Azure account and create resources - you will need to create a Resource Group near your location (for example: US West 3). Create two Virtual Machines and select the Resouce Group that was created earlier for each of these to ensure they share the same permissions, policies, and network. Allow the first VM to create a new Vnet and Subnet. While creating the second VM, select the previously created resource group and Vnet.
+Login to your Azure account and create resources - you will need to create a Resource Group near your location (for example: US West 3). Create two Virtual Machines (VM-1: Windows 10; VM-2: Ubuntu Server) and select the Resouce Group that was created earlier for each of these to ensure they share the same permissions, policies, and network. Allow the first VM to create a new Vnet and Subnet. While creating the second VM, select the previously created Resource Group and Vnet.
 </p>
 <br />
 
@@ -43,12 +43,12 @@ Login to your Azure account and create resources - you will need to create a Res
 <img width="1762" alt="Screenshot 2023-08-06 at 6 54 54 PM" src="https://github.com/gregjames1/Network-Security-Groups/assets/129281605/dcd7e70c-af1e-4c9d-b5bc-500502cd8a56">
 </p>
 <p>
-Login to Windows 10 VM using Remote Desktop (you will log in with the username and password that was set up while you were creating the VM) and install WireShark. Follow the installation steps and open the program once finished. Run PowerShell as an Administrator and ping VM-2 (Ubuntu Server) using its private IP Address. Filter for ICMP traffic in WireShark and observe the network traffic - requests from VM-1 (source IP) and replies from VM-2 (destination IP).
+Login to VM-1 using Remote Desktop using the credentials set up while creating the VM and install WireShark. Follow the installation steps and open the program once finished. Run PowerShell as an Administrator and ping VM-2 using its private IP Address. Filter for ICMP traffic in WireShark and observe the network traffic - requests from VM-1 (source IP) and replies from VM-2 (destination IP).
 </p>
 <br />
 
 <p>
-<img width="748" alt="Screenshot 2023-08-06 at 7 00 58 PM" src="https://github.com/gregjames1/Network-Security-Groups/assets/129281605/87e6dcad-350a-4dd5-a25f-fb5e2439b4df">
+<img width="1496" alt="Screenshot 2023-08-07 at 11 43 39 PM" src="https://github.com/gregjames1/Network-Security-Groups/assets/129281605/6429e167-2624-4f9f-8719-dd9fbb82e767">
 </p>
 <p>
 Return to the Azure portal, navigate to Network Security Groups, and select VM-2 (Ubuntu Server). Select inbound security rules from the left menu, choose add, and select the ICMP protocol, deny the action, enter a priority higher than 300 (to ensure that the new rule is evaluated prior to the other existing rules), and click the add button.
@@ -67,7 +67,7 @@ Return to the remote Windows session and observe that the ping requests begin to
 <img width="1860" alt="Screenshot 2023-08-06 at 7 19 38 PM" src="https://github.com/gregjames1/Network-Security-Groups/assets/129281605/6c1d85e6-4c74-4dcc-abf0-9a1265368ecb">
 </p>
 <p>
-Return to WireShark and filter for SSH traffic. In PowerShell, SSH into VM-2 using the private IP address and the credentials set up when creating VM-2. Observe the traffic in WireShark as you connect to the server using this protocol.
+Return to WireShark and filter for SSH traffic. In PowerShell, SSH into VM-2 using the private IP address and the credentials set up when creating the server. Observe the traffic in WireShark as you connect to the server using this protocol.
 </p>
 <br />
 
